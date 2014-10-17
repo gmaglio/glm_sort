@@ -37,13 +37,20 @@ void plist(int *array, ssize_t nsize) {
 
 }
 
-int main() {
+int main(int argc, char *argv[]) {
    
-    int array[] = { 12, 66, 8, 239, 40, -2, 550, 93, 32 };
+    int array[] = { 12, 66, 8, 239, 40, -2, 550, 93, 32, -11590, 43 };
+    int count = argc;
+    int i = 0;
 
-    plist(array,9);
-    bsort(array,9);
-    plist(array,9);
+    for(i = 1;i < argc;i++) {
+       array[i] = atoi(argv[i]);
+    } 
+
+    printf("arg count: %i\n", count);
+    plist(array,11);
+    bsort(array,11);
+    plist(array,11);
     
     return 0;
 
