@@ -1,3 +1,2 @@
-merge
-merge.o
-data/*.csv
+bin/glm_sort
+obj/*.o
