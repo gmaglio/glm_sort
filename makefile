@@ -1,13 +1,21 @@
+SRC=./src
+OBJ=./obj
+BIN=./bin
+HEADERS="./headers"
+
 CC:=gcc
-CFLAGS:=-c
+CFLAGS:=-c -g -I$(HEADERS)
 
-all: merge
+all: $(OBJ)/main.o $(OBJ)/merge.o $(OBJ)/bsort.o
+	$(CC) $(OBJ)/main.o $(OBJ)/merge.o $(OBJ)/bsort.o -o $(BIN)/glm_sort
 
-merge.o: merge.c
-	$(CC) $(CFLAGS) merge.c
+$(OBJ)/main.o: $(SRC)/main.c
+	$(CC) $(CFLAGS) $(SRC)/main.c -o $(OBJ)/main.o
+$(OBJ)/merge.o: $(SRC)/merge.c
+	$(CC) $(CFLAGS) $(SRC)/merge.c -o $(OBJ)/merge.o
+$(OBJ)/bsort.o: $(SRC)/bsort.c
+	$(CC) $(CFLAGS) $(SRC)/bsort.c -o $(OBJ)/bsort.o
 
-merge: merge.o
-	$(CC) merge.o -o merge
 
 clean:
-	rm -v merge.o merge
+	rm -v $(OBJ)/main.o $(OBJ)/merge.o $(OBJ)/bsort.o $(BIN)/glm_sort
